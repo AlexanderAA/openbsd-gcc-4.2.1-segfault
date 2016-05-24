@@ -7,6 +7,7 @@ GCC 4.9.3 from OpenBSD 5.9 packages compiles all bootstrap files without errors.
 
 Confirmed on two different machines, see system information below.
 
+Run the following command to reproduce:
 ```
 $ cd bootstrap; gcc -std=gnu99 -c -O1 -w -m64 -I../build/lib/targets/self/include/ -I../build/lib/include/ -I/usr/local/include -fPIC -fno-common -fno-strict-aliasing -fomit-frame-pointer -o mlton-compile.100.o mlton-compile.100.c
 ```
