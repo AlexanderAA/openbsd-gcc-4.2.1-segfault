@@ -5,6 +5,8 @@ OpenBSD 5.9 default GCC 4.2.1 compiler segfaults when compiling mlton-compile.10
 
 GCC 4.9.3 from OpenBSD 5.9 packages compiles all bootstrap files without errors.
 
+Confirmed on two different machines, see system information below.
+
 ```
 $ gcc -std=gnu99 -c -O1 -w -m64 -I../build/lib/targets/self/include/ -I../build/lib/include/ -I/usr/local/include -fPIC -fno-common -fno-strict-aliasing -fomit-frame-pointer -o mlton-compile.100.o mlton-compile.100.c
 ```
@@ -28,6 +30,7 @@ System information:
 OpenBSD www.my.domain 5.9 GENERIC#1761 amd64
 ```
 
+Machine 1:
 ```
 # dmesg
 OpenBSD 5.9 (GENERIC) #1761: Fri Feb 26 01:15:04 MST 2016
@@ -119,3 +122,1026 @@ sd1: 15358MB, 512 bytes/sector, 31454678 sectors
 root on sd1a (7ff6fcc5f67bcc4a.a) swap on sd1b dump on sd1b
 clock: unknown CMOS layout
 ```
+
+Machine 2:
+```
+OpenBSD 5.9 (GENERIC.MP) #1888: Fri Feb 26 01:20:19 MST 2016
+    deraadt@amd64.openbsd.org:/usr/src/sys/arch/amd64/compile/GENERIC.MP
+real mem = 8455319552 (8063MB)
+avail mem = 8194867200 (7815MB)
+mpath0 at root
+scsibus0 at mpath0: 256 targets
+mainbus0 at root
+bios0 at mainbus0: SMBIOS rev. 2.6 @ 0xdae9c000 (66 entries)
+bios0: vendor LENOVO version "8DET50WW (1.20 )" date 07/07/2011
+bios0: LENOVO 4286CTO
+acpi0 at bios0: rev 2
+acpi0: sleep states S0 S3 S4 S5
+acpi0: tables DSDT FACP SLIC SSDT SSDT SSDT HPET APIC MCFG ECDT ASF! TCPA SSDT SSDT DMAR UEFI UEFI UEFI
+acpi0: wakeup devices LID_(S3) SLPB(S3) IGBE(S4) EXP4(S4) EXP7(S4) EHC1(S3) EHC2(S3) HDEF(S4)
+acpitimer0 at acpi0: 3579545 Hz, 24 bits
+acpihpet0 at acpi0: 14318179 Hz
+acpimadt0 at acpi0 addr 0xfee00000: PC-AT compat
+cpu0 at mainbus0: apid 0 (boot processor)
+cpu0: Intel(R) Core(TM) i5-2540M CPU @ 2.60GHz, 2591.96 MHz
+cpu0: FPU,VME,DE,PSE,TSC,MSR,PAE,MCE,CX8,APIC,SEP,MTRR,PGE,MCA,CMOV,PAT,PSE36,CFLUSH,DS,ACPI,MMX,FXSR,SSE,SSE2,SS,HTT,TM,PBE,SSE3,PCLMUL,DTES64,MWAIT,DS-CPL,VMX,SMX,EST,TM2,SSSE3,CX16,xTPR,PDCM,PCID,SSE4.1,SSE4.2,x2APIC,POPCNT,DEADLINE,AES,XSAVE,AVX,NXE,LONG,LAHF,PERF,ITSC,SENSOR,ARAT
+cpu0: 256KB 64b/line 8-way L2 cache
+cpu0: smt 0, core 0, package 0
+mtrr: Pentium Pro MTRR support, 10 var ranges, 88 fixed ranges
+cpu0: apic clock running at 99MHz
+cpu0: mwait min=64, max=64, C-substates=0.2.1.1.2, IBE
+cpu1 at mainbus0: apid 1 (application processor)
+cpu1: Intel(R) Core(TM) i5-2540M CPU @ 2.60GHz, 2591.59 MHz
+cpu1: FPU,VME,DE,PSE,TSC,MSR,PAE,MCE,CX8,APIC,SEP,MTRR,PGE,MCA,CMOV,PAT,PSE36,CFLUSH,DS,ACPI,MMX,FXSR,SSE,SSE2,SS,HTT,TM,PBE,SSE3,PCLMUL,DTES64,MWAIT,DS-CPL,VMX,SMX,EST,TM2,SSSE3,CX16,xTPR,PDCM,PCID,SSE4.1,SSE4.2,x2APIC,POPCNT,DEADLINE,AES,XSAVE,AVX,NXE,LONG,LAHF,PERF,ITSC,SENSOR,ARAT
+cpu1: 256KB 64b/line 8-way L2 cache
+cpu1: smt 1, core 0, package 0
+cpu2 at mainbus0: apid 2 (application processor)
+cpu2: Intel(R) Core(TM) i5-2540M CPU @ 2.60GHz, 2591.59 MHz
+cpu2: FPU,VME,DE,PSE,TSC,MSR,PAE,MCE,CX8,APIC,SEP,MTRR,PGE,MCA,CMOV,PAT,PSE36,CFLUSH,DS,ACPI,MMX,FXSR,SSE,SSE2,SS,HTT,TM,PBE,SSE3,PCLMUL,DTES64,MWAIT,DS-CPL,VMX,SMX,EST,TM2,SSSE3,CX16,xTPR,PDCM,PCID,SSE4.1,SSE4.2,x2APIC,POPCNT,DEADLINE,AES,XSAVE,AVX,NXE,LONG,LAHF,PERF,ITSC,SENSOR,ARAT
+cpu2: 256KB 64b/line 8-way L2 cache
+cpu2: smt 0, core 1, package 0
+cpu3 at mainbus0: apid 3 (application processor)
+cpu3: Intel(R) Core(TM) i5-2540M CPU @ 2.60GHz, 2591.59 MHz
+cpu3: FPU,VME,DE,PSE,TSC,MSR,PAE,MCE,CX8,APIC,SEP,MTRR,PGE,MCA,CMOV,PAT,PSE36,CFLUSH,DS,ACPI,MMX,FXSR,SSE,SSE2,SS,HTT,TM,PBE,SSE3,PCLMUL,DTES64,MWAIT,DS-CPL,VMX,SMX,EST,TM2,SSSE3,CX16,xTPR,PDCM,PCID,SSE4.1,SSE4.2,x2APIC,POPCNT,DEADLINE,AES,XSAVE,AVX,NXE,LONG,LAHF,PERF,ITSC,SENSOR,ARAT
+cpu3: 256KB 64b/line 8-way L2 cache
+cpu3: smt 1, core 1, package 0
+ioapic0 at mainbus0: apid 2 pa 0xfec00000, version 20, 24 pins
+acpimcfg0 at acpi0 addr 0xf8000000, bus 0-63
+acpiec0 at acpi0
+acpiprt0 at acpi0: bus 0 (PCI0)
+acpiprt1 at acpi0: bus -1 (PEG_)
+acpiprt2 at acpi0: bus 2 (EXP1)
+acpiprt3 at acpi0: bus 3 (EXP2)
+acpiprt4 at acpi0: bus 5 (EXP4)
+acpiprt5 at acpi0: bus 13 (EXP5)
+acpiprt6 at acpi0: bus -1 (EXP7)
+acpicpu0 at acpi0: C3(200@109 io@0x416), C2(500@80 io@0x414), C1(1000@1 halt), PSS
+acpicpu1 at acpi0: C3(200@109 io@0x416), C2(500@80 io@0x414), C1(1000@1 halt), PSS
+acpicpu2 at acpi0: C3(200@109 io@0x416), C2(500@80 io@0x414), C1(1000@1 halt), PSS
+acpicpu3 at acpi0: C3(200@109 io@0x416), C2(500@80 io@0x414), C1(1000@1 halt), PSS
+acpipwrres0 at acpi0: PUBS, resource for EHC1, EHC2
+acpitz0 at acpi0: critical temperature is 99 degC
+acpibtn0 at acpi0: LID_
+acpibtn1 at acpi0: SLPB
+acpibat0 at acpi0: BAT0 model "42T4940" serial 13527 type LION oem "SANYO"
+acpibat1 at acpi0: BAT1 not present
+acpiac0 at acpi0: AC unit offline
+acpithinkpad0 at acpi0
+acpidock0 at acpi0: GDCK not docked (0)
+cpu0: Enhanced SpeedStep 2591 MHz: speeds: 2601, 2600, 2400, 2200, 2000, 1800, 1600, 1400, 1200, 1000, 800 MHz
+pci0 at mainbus0 bus 0
+pchb0 at pci0 dev 0 function 0 "Intel Core 2G Host" rev 0x09
+inteldrm0 at pci0 dev 2 function 0 "Intel HD Graphics 3000" rev 0x09
+drm0 at inteldrm0
+inteldrm0: msi
+inteldrm0: 1366x768
+wsdisplay0 at inteldrm0 mux 1: console (std, vt100 emulation)
+wsdisplay0: screen 1-5 added (std, vt100 emulation)
+"Intel 6 Series MEI" rev 0x04 at pci0 dev 22 function 0 not configured
+em0 at pci0 dev 25 function 0 "Intel 82579LM" rev 0x04: msi, address f0:de:f1:80:a7:a5
+ehci0 at pci0 dev 26 function 0 "Intel 6 Series USB" rev 0x04: apic 2 int 16
+usb0 at ehci0: USB revision 2.0
+uhub0 at usb0 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+azalia0 at pci0 dev 27 function 0 "Intel 6 Series HD Audio" rev 0x04: msi
+azalia0: codecs: Conexant CX20590, Intel/0x2805, using Conexant CX20590
+audio0 at azalia0
+ppb0 at pci0 dev 28 function 0 "Intel 6 Series PCIE" rev 0xb4: msi
+pci1 at ppb0 bus 2
+ppb1 at pci0 dev 28 function 1 "Intel 6 Series PCIE" rev 0xb4: msi
+pci2 at ppb1 bus 3
+iwn0 at pci2 dev 0 function 0 "Intel Centrino Advanced-N 6205" rev 0x34: msi, MIMO 2T2R, MoW, address a0:88:b4:db:8f:44
+ppb2 at pci0 dev 28 function 3 "Intel 6 Series PCIE" rev 0xb4: msi
+pci3 at ppb2 bus 5
+ppb3 at pci0 dev 28 function 4 "Intel 6 Series PCIE" rev 0xb4: msi
+pci4 at ppb3 bus 13
+sdhc0 at pci4 dev 0 function 0 "Ricoh 5U823 SD/MMC" rev 0x04: apic 2 int 16
+sdmmc0 at sdhc0
+ehci1 at pci0 dev 29 function 0 "Intel 6 Series USB" rev 0x04: apic 2 int 23
+usb1 at ehci1: USB revision 2.0
+uhub1 at usb1 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+pcib0 at pci0 dev 31 function 0 "Intel QM67 LPC" rev 0x04
+ahci0 at pci0 dev 31 function 2 "Intel 6 Series AHCI" rev 0x04: msi, AHCI 1.3
+ahci0: port 0: 6.0Gb/s
+scsibus1 at ahci0: 32 targets
+sd0 at scsibus1 targ 0 lun 0: <ATA, Samsung SSD 840, DXM0> SCSI3 0/direct fixed naa.5002538550041b79
+sd0: 122104MB, 512 bytes/sector, 250069680 sectors, thin
+ichiic0 at pci0 dev 31 function 3 "Intel 6 Series SMBus" rev 0x04: apic 2 int 18
+iic0 at ichiic0
+spdmem0 at iic0 addr 0x50: 4GB DDR3 SDRAM PC3-10600 SO-DIMM
+spdmem1 at iic0 addr 0x51: 4GB DDR3 SDRAM PC3-10600 SO-DIMM
+isa0 at pcib0
+isadma0 at isa0
+pckbc0 at isa0 port 0x60/5 irq 1 irq 12
+pckbd0 at pckbc0 (kbd slot)
+wskbd0 at pckbd0: console keyboard, using wsdisplay0
+pms0 at pckbc0 (aux slot)
+wsmouse0 at pms0 mux 0
+pcppi0 at isa0 port 0x61
+spkr0 at pcppi0
+aps0 at isa0 port 0x1600/31
+uhub2 at uhub0 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+ugen0 at uhub2 port 4 "Broadcom Corp Broadcom Bluetooth Device" rev 2.00/7.48 addr 3
+uvideo0 at uhub2 port 6 configuration 1 interface 0 "Chicony Electronics Co., Ltd. Integrated Camera" rev 2.00/8.54 addr 4
+video0 at uvideo0
+uhub3 at uhub1 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+umodem0 at uhub3 port 4 configuration 1 interface 1 "Lenovo F5521gw" rev 2.00/0.00 addr 3
+umodem0: data interface 2, has CM over data, has break
+umodem0: status change notification available
+ucom0 at umodem0
+umodem1 at uhub3 port 4 configuration 1 interface 3 "Lenovo F5521gw" rev 2.00/0.00 addr 3
+umodem1: data interface 4, has CM over data, has break
+umodem1: status change notification available
+ucom1 at umodem1
+umodem2 at uhub3 port 4 configuration 1 interface 9 "Lenovo F5521gw" rev 2.00/0.00 addr 3
+umodem2: data interface 10, has CM over data, has break
+umodem2: status change notification available
+ucom2 at umodem2
+ugen1 at uhub3 port 4 configuration 1 "Lenovo F5521gw" rev 2.00/0.00 addr 3
+vscsi0 at root
+scsibus2 at vscsi0: 256 targets
+softraid0 at root
+scsibus3 at softraid0: 256 targets
+softraid0: sd3 was not shutdown properly
+sd1 at scsibus3 targ 1 lun 0: <OPENBSD, SR CRYPTO, 005> SCSI2 0/direct fixed
+sd1: 122103MB, 512 bytes/sector, 250067198 sectors
+softraid0: volume sd1 is roaming, it used to be sd3, updating metadata
+root on sd1a (380e8bfbba4f9df3.a) swap on sd1b dump on sd1b
+WARNING: / was not properly unmounted
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 4
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 5
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 6
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Logitech USB-PS/2 Optical Mouse" rev 2.00/27.30 addr 7
+uhidev0: iclass 3/1
+ums0 at uhidev0: 8 buttons, Z and W dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 8
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 8
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+ugen0 detached
+video0 detached
+uvideo0 detached
+uhub2 detached
+uhub0 detached
+ucom0 detached
+umodem0 detached
+ucom1 detached
+umodem1 detached
+ucom2 detached
+umodem2 detached
+ugen1 detached
+uhub3 detached
+uhub1 detached
+uhub0 at usb0 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub1 at usb1 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub2 at uhub0 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+ugen0 at uhub2 port 4 "Broadcom Corp Broadcom Bluetooth Device" rev 2.00/7.48 addr 3
+uvideo0 at uhub2 port 6 configuration 1 interface 0 "Chicony Electronics Co., Ltd. Integrated Camera" rev 2.00/8.54 addr 4
+video0 at uvideo0
+uhub3 at uhub1 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 3
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 4
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 5
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Logitech USB-PS/2 Optical Mouse" rev 2.00/27.30 addr 6
+uhidev0: iclass 3/1
+ums0 at uhidev0: 8 buttons, Z and W dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+umodem0 at uhub3 port 4 configuration 1 interface 1 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem0: data interface 2, has CM over data, has break
+umodem0: status change notification available
+ucom0 at umodem0
+umodem1 at uhub3 port 4 configuration 1 interface 3 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem1: data interface 4, has CM over data, has break
+umodem1: status change notification available
+ucom1 at umodem1
+umodem2 at uhub3 port 4 configuration 1 interface 9 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem2: data interface 10, has CM over data, has break
+umodem2: status change notification available
+ucom2 at umodem2
+ugen1 at uhub3 port 4 configuration 1 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 3
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 4
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 5
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Logitech USB-PS/2 Optical Mouse" rev 2.00/27.30 addr 6
+uhidev0: iclass 3/1
+ums0 at uhidev0: 8 buttons, Z and W dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 3
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 4
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 5
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Logitech USB-PS/2 Optical Mouse" rev 2.00/27.30 addr 6
+uhidev0: iclass 3/1
+ums0 at uhidev0: 8 buttons, Z and W dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+ugen0 detached
+video0 detached
+uvideo0 detached
+uhub2 detached
+uhub0 detached
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+ucom0 detached
+umodem0 detached
+ucom1 detached
+umodem1 detached
+ucom2 detached
+umodem2 detached
+ugen1 detached
+uhub3 detached
+uhub1 detached
+uhub0 at usb0 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub1 at usb1 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub2 at uhub0 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+ugen0 at uhub2 port 4 "Broadcom Corp Broadcom Bluetooth Device" rev 2.00/7.48 addr 3
+uvideo0 at uhub2 port 6 configuration 1 interface 0 "Chicony Electronics Co., Ltd. Integrated Camera" rev 2.00/8.54 addr 4
+video0 at uvideo0
+uhub3 at uhub1 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 3
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 4
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 5
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Logitech USB-PS/2 Optical Mouse" rev 2.00/27.30 addr 6
+uhidev0: iclass 3/1
+ums0 at uhidev0: 8 buttons, Z and W dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+umodem0 at uhub3 port 4 configuration 1 interface 1 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem0: data interface 2, has CM over data, has break
+umodem0: status change notification available
+ucom0 at umodem0
+umodem1 at uhub3 port 4 configuration 1 interface 3 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem1: data interface 4, has CM over data, has break
+umodem1: status change notification available
+ucom1 at umodem1
+umodem2 at uhub3 port 4 configuration 1 interface 9 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem2: data interface 10, has CM over data, has break
+umodem2: status change notification available
+ucom2 at umodem2
+ugen1 at uhub3 port 4 configuration 1 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+uid 1000 on /home: file system full
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 3
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 4
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 5
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Logitech USB-PS/2 Optical Mouse" rev 2.00/27.30 addr 6
+uhidev0: iclass 3/1
+ums0 at uhidev0: 8 buttons, Z and W dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+ugen0 detached
+video0 detached
+uvideo0 detached
+uhub2 detached
+uhub0 detached
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+ucom0 detached
+umodem0 detached
+ucom1 detached
+umodem1 detached
+ucom2 detached
+umodem2 detached
+ugen1 detached
+uhub3 detached
+uhub1 detached
+uhub0 at usb0 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub1 at usb1 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub2 at uhub0 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+ugen0 at uhub2 port 4 "Broadcom Corp Broadcom Bluetooth Device" rev 2.00/7.48 addr 3
+uvideo0 at uhub2 port 6 configuration 1 interface 0 "Chicony Electronics Co., Ltd. Integrated Camera" rev 2.00/8.54 addr 4
+video0 at uvideo0
+uhub3 at uhub1 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 3
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 4
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 5
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Logitech USB-PS/2 Optical Mouse" rev 2.00/27.30 addr 6
+uhidev0: iclass 3/1
+ums0 at uhidev0: 8 buttons, Z and W dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+umodem0 at uhub3 port 4 configuration 1 interface 1 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem0: data interface 2, has CM over data, has break
+umodem0: status change notification available
+ucom0 at umodem0
+umodem1 at uhub3 port 4 configuration 1 interface 3 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem1: data interface 4, has CM over data, has break
+umodem1: status change notification available
+ucom1 at umodem1
+umodem2 at uhub3 port 4 configuration 1 interface 9 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem2: data interface 10, has CM over data, has break
+umodem2: status change notification available
+ucom2 at umodem2
+ugen1 at uhub3 port 4 configuration 1 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Microsoft Microsoft Basic Optical Mouse v2.0" rev 1.10/1.04 addr 6
+uhidev0: iclass 3/1
+ums0 at uhidev0: 3 buttons, Z dir
+wsmouse1 at ums0 mux 0
+ugen0 detached
+video0 detached
+uvideo0 detached
+uhub2 detached
+uhub0 detached
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+ucom0 detached
+umodem0 detached
+ucom1 detached
+umodem1 detached
+ucom2 detached
+umodem2 detached
+ugen1 detached
+uhub3 detached
+uhub1 detached
+uhub0 at usb0 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub1 at usb1 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub2 at uhub0 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+ugen0 at uhub2 port 4 "Broadcom Corp Broadcom Bluetooth Device" rev 2.00/7.48 addr 3
+uvideo0 at uhub2 port 6 configuration 1 interface 0 "Chicony Electronics Co., Ltd. Integrated Camera" rev 2.00/8.54 addr 4
+video0 at uvideo0
+uhub3 at uhub1 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 3
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 4
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 5
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Microsoft Microsoft Basic Optical Mouse v2.0" rev 1.10/1.04 addr 6
+uhidev0: iclass 3/1
+ums0 at uhidev0: 3 buttons, Z dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+umodem0 at uhub3 port 4 configuration 1 interface 1 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem0: data interface 2, has CM over data, has break
+umodem0: status change notification available
+ucom0 at umodem0
+umodem1 at uhub3 port 4 configuration 1 interface 3 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem1: data interface 4, has CM over data, has break
+umodem1: status change notification available
+ucom1 at umodem1
+umodem2 at uhub3 port 4 configuration 1 interface 9 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem2: data interface 10, has CM over data, has break
+umodem2: status change notification available
+ucom2 at umodem2
+ugen1 at uhub3 port 4 configuration 1 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 3
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 4
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 5
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Microsoft Microsoft Basic Optical Mouse v2.0" rev 1.10/1.04 addr 6
+uhidev0: iclass 3/1
+ums0 at uhidev0: 3 buttons, Z dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+ugen0 detached
+video0 detached
+uvideo0 detached
+uhub2 detached
+uhub0 detached
+ucom0 detached
+umodem0 detached
+ucom1 detached
+umodem1 detached
+ucom2 detached
+umodem2 detached
+ugen1 detached
+uhub3 detached
+uhub1 detached
+uhub0 at usb0 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub1 at usb1 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub2 at uhub0 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+ugen0 at uhub2 port 4 "Broadcom Corp Broadcom Bluetooth Device" rev 2.00/7.48 addr 3
+uvideo0 at uhub2 port 6 configuration 1 interface 0 "Chicony Electronics Co., Ltd. Integrated Camera" rev 2.00/8.54 addr 4
+video0 at uvideo0
+uhub3 at uhub1 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+umodem0 at uhub3 port 4 configuration 1 interface 1 "Lenovo F5521gw" rev 2.00/0.00 addr 3
+umodem0: data interface 2, has CM over data, has break
+umodem0: status change notification available
+ucom0 at umodem0
+umodem1 at uhub3 port 4 configuration 1 interface 3 "Lenovo F5521gw" rev 2.00/0.00 addr 3
+umodem1: data interface 4, has CM over data, has break
+umodem1: status change notification available
+ucom1 at umodem1
+umodem2 at uhub3 port 4 configuration 1 interface 9 "Lenovo F5521gw" rev 2.00/0.00 addr 3
+umodem2: data interface 10, has CM over data, has break
+umodem2: status change notification available
+ucom2 at umodem2
+ugen1 at uhub3 port 4 configuration 1 "Lenovo F5521gw" rev 2.00/0.00 addr 3
+uid 0 on /usr: out of inodes
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 4
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 5
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 6
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Microsoft Microsoft Basic Optical Mouse v2.0" rev 1.10/1.04 addr 7
+uhidev0: iclass 3/1
+ums0 at uhidev0: 3 buttons, Z dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 8
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 8
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 4
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 5
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 6
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Microsoft Microsoft Basic Optical Mouse v2.0" rev 1.10/1.04 addr 7
+uhidev0: iclass 3/1
+ums0 at uhidev0: 3 buttons, Z dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 8
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 8
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+ugen0 detached
+video0 detached
+uvideo0 detached
+uhub2 detached
+uhub0 detached
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+ucom0 detached
+umodem0 detached
+ucom1 detached
+umodem1 detached
+ucom2 detached
+umodem2 detached
+ugen1 detached
+uhub3 detached
+uhub1 detached
+uhub0 at usb0 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub1 at usb1 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub2 at uhub0 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+ugen0 at uhub2 port 4 "Broadcom Corp Broadcom Bluetooth Device" rev 2.00/7.48 addr 3
+uvideo0 at uhub2 port 6 configuration 1 interface 0 "Chicony Electronics Co., Ltd. Integrated Camera" rev 2.00/8.54 addr 4
+video0 at uvideo0
+uhub3 at uhub1 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 3
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 4
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 5
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Microsoft Microsoft Basic Optical Mouse v2.0" rev 1.10/1.04 addr 6
+uhidev0: iclass 3/1
+ums0 at uhidev0: 3 buttons, Z dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+umodem0 at uhub3 port 4 configuration 1 interface 1 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem0: data interface 2, has CM over data, has break
+umodem0: status change notification available
+ucom0 at umodem0
+umodem1 at uhub3 port 4 configuration 1 interface 3 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem1: data interface 4, has CM over data, has break
+umodem1: status change notification available
+ucom1 at umodem1
+umodem2 at uhub3 port 4 configuration 1 interface 9 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem2: data interface 10, has CM over data, has break
+umodem2: status change notification available
+ucom2 at umodem2
+ugen1 at uhub3 port 4 configuration 1 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+ugen0 detached
+video0 detached
+uvideo0 detached
+uhub2 detached
+uhub0 detached
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+ucom0 detached
+umodem0 detached
+ucom1 detached
+umodem1 detached
+ucom2 detached
+umodem2 detached
+ugen1 detached
+uhub3 detached
+uhub1 detached
+uhub0 at usb0 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub1 at usb1 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub2 at uhub0 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+ugen0 at uhub2 port 4 "Broadcom Corp Broadcom Bluetooth Device" rev 2.00/7.48 addr 3
+uvideo0 at uhub2 port 6 configuration 1 interface 0 "Chicony Electronics Co., Ltd. Integrated Camera" rev 2.00/8.54 addr 4
+video0 at uvideo0
+uhub3 at uhub1 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+umodem0 at uhub3 port 4 configuration 1 interface 1 "Lenovo F5521gw" rev 2.00/0.00 addr 3
+umodem0: data interface 2, has CM over data, has break
+umodem0: status change notification available
+ucom0 at umodem0
+umodem1 at uhub3 port 4 configuration 1 interface 3 "Lenovo F5521gw" rev 2.00/0.00 addr 3
+umodem1: data interface 4, has CM over data, has break
+umodem1: status change notification available
+ucom1 at umodem1
+umodem2 at uhub3 port 4 configuration 1 interface 9 "Lenovo F5521gw" rev 2.00/0.00 addr 3
+umodem2: data interface 10, has CM over data, has break
+umodem2: status change notification available
+ucom2 at umodem2
+ugen1 at uhub3 port 4 configuration 1 "Lenovo F5521gw" rev 2.00/0.00 addr 3
+ugen0 detached
+video0 detached
+uvideo0 detached
+uhub2 detached
+uhub0 detached
+ucom0 detached
+umodem0 detached
+ucom1 detached
+umodem1 detached
+ucom2 detached
+umodem2 detached
+ugen1 detached
+uhub3 detached
+uhub1 detached
+uhub0 at usb0 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub1 at usb1 "Intel EHCI root hub" rev 2.00/1.00 addr 1
+uhub2 at uhub0 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+ugen0 at uhub2 port 4 "Broadcom Corp Broadcom Bluetooth Device" rev 2.00/7.48 addr 3
+uvideo0 at uhub2 port 6 configuration 1 interface 0 "Chicony Electronics Co., Ltd. Integrated Camera" rev 2.00/8.54 addr 4
+video0 at uvideo0
+uhub3 at uhub1 port 1 "Intel Rate Matching Hub" rev 2.00/0.00 addr 2
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 3
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 4
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 5
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Microsoft Microsoft Basic Optical Mouse v2.0" rev 1.10/1.04 addr 6
+uhidev0: iclass 3/1
+ums0 at uhidev0: 3 buttons, Z dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+umodem0 at uhub3 port 4 configuration 1 interface 1 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem0: data interface 2, has CM over data, has break
+umodem0: status change notification available
+ucom0 at umodem0
+umodem1 at uhub3 port 4 configuration 1 interface 3 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem1: data interface 4, has CM over data, has break
+umodem1: status change notification available
+ucom1 at umodem1
+umodem2 at uhub3 port 4 configuration 1 interface 9 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+umodem2: data interface 10, has CM over data, has break
+umodem2: status change notification available
+ucom2 at umodem2
+ugen1 at uhub3 port 4 configuration 1 "Lenovo F5521gw" rev 2.00/0.00 addr 8
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 3
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 4
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 5
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Microsoft Microsoft Basic Optical Mouse v2.0" rev 1.10/1.04 addr 6
+uhidev0: iclass 3/1
+ums0 at uhidev0: 3 buttons, Z dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 3
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 4
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 5
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Microsoft Microsoft Basic Optical Mouse v2.0" rev 1.10/1.04 addr 6
+uhidev0: iclass 3/1
+ums0 at uhidev0: 3 buttons, Z dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+uhub4 at uhub3 port 2 "Standard Microsystems product 0x2502" rev 2.00/0.01 addr 3
+uhub5 at uhub4 port 1 "Standard Microsystems product 0x2602" rev 2.00/0.00 addr 4
+umass0 at uhub5 port 1 configuration 1 interface 0 "Generic Flash Card Reader" rev 2.00/4.44 addr 5
+umass0: using SCSI over Bulk-Only
+scsibus4 at umass0: 2 targets, initiator 0
+sd2 at scsibus4 targ 1 lun 0: <Generic, Flash HS-CF, 4.44> SCSI0 0/direct removable
+sd3 at scsibus4 targ 1 lun 1: <Generic, Flash HS-COMBO, 4.44> SCSI0 0/direct removable
+uhidev0 at uhub5 port 2 configuration 1 interface 0 "Microsoft Microsoft Basic Optical Mouse v2.0" rev 1.10/1.04 addr 6
+uhidev0: iclass 3/1
+ums0 at uhidev0: 3 buttons, Z dir
+wsmouse1 at ums0 mux 0
+uhidev1 at uhub4 port 2 configuration 1 interface 0 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev1: iclass 3/1
+ukbd0 at uhidev1: 8 variable keys, 6 key codes
+wskbd1 at ukbd0 mux 1
+wskbd1: connecting to wsdisplay0
+uhidev2 at uhub4 port 2 configuration 1 interface 1 " USB Keyboard" rev 1.10/3.10 addr 7
+uhidev2: iclass 3/0, 2 report ids
+uhid0 at uhidev2 reportid 1: input=1, output=0, feature=0
+uhid1 at uhidev2 reportid 2: input=3, output=0, feature=0
+sd2 detached
+sd3 detached
+scsibus4 detached
+umass0 detached
+wsmouse1 detached
+ums0 detached
+uhidev0 detached
+uhub5 detached
+wskbd1: disconnecting from wsdisplay0
+wskbd1 detached
+ukbd0 detached
+uhidev1 detached
+uhid0 detached
+uhid1 detached
+uhidev2 detached
+uhub4 detached
+
+```
+
+
+
